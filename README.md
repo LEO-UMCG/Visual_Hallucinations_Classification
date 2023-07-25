@@ -59,7 +59,7 @@ July 2023
 
 
 The following graph shows an overview of the created pipeline:
-![Schematic graph of the analysis pipeline](images_for_readme/pipeline.pdf)
+![Schematic graph of the analysis pipeline](images_for_readme/pipeline.png)
 
 This project was created on MacOS 11.5.2 in Python (Version Python 3.10.10) and tested on a MacBook Pro 2020, 16GB RAM, M1 Chip. Please note that paths in MacOS use backslashes (/) while Windows uses forward slashes (\). Please make sure to use a forward slash when inserting file paths on Windows. 
 
@@ -117,7 +117,7 @@ The files starting with *sub* should be present for each participant (0001, 0002
 
 The participants.tsv file should be present in your data repository. It could look like this:
 
-![First few rows of an example participants.tsv file](images_for_readme/participants_file.pdf)
+![First few rows of an example participants.tsv file](images_for_readme/participants_file.png)
 
 ## Extracting fastECM features 
 
@@ -177,7 +177,7 @@ whereby there should be one feature map of each type (5 in total) per participan
 
 All subsequent steps can be performed using the pipeline provided in this repository. An overview can be seen in the figure below:
 
-![Schematic graph of the current pipeline](images_for_readme/Flowchart.pdf)
+![Schematic graph of the current pipeline](images_for_readme/Flowchart.png)
 
 ### Installation
 
@@ -290,7 +290,11 @@ All intensity values that are multiplied with 1 stay in the matrix, all others a
 
 Contains the code to run all classifiers. 
 
-**run_linear_svm_classification** runs classification with a linear SVM using a parameter grid for hyperparameter tuning. Prediction on the test set is performed with the best performing classifier from the grid search. Outputs performance values.
+**run_linear_svm_classification** runs classification with a linear support vector machine (SVM) using a parameter grid for hyperparameter tuning. Prediction on the test set is performed with the best performing classifier from the grid search. Outputs performance values.
+
+Below you can see a schematic visualization of a linear SVM:
+
+![Schematic visualization of a linear SVM](images_for_readme/SVM-schema-2.png)
 
 **run_nonlinear_svm_classification** runs classification with a non-linear SVM using a parameter grid for hyperparameter tuning. Prediction on the test set is performed with the best performing classifier from the grid search. Outputs performance values.
 
