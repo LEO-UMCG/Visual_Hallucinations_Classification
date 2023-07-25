@@ -1,19 +1,23 @@
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#Classification of visual hallucinations in rs-fMRI using machine learning">Classification of visual hallucinations in rs-fMRI using machine learning</a>
-    </li>
-    <li><a href="#1. Project description">1. Project description</a></li>
-    <li><a href="#2. Data">2. Data</a></li>
-    <li><a href="#3. Preprocessing and feature extraction">3. Preprocessing and feature extraction</a></li>
-    <li><a href="#4. Visual Hallucinations Classification pipeline">4. Visual Hallucinations Classification pipeline</a></li>
-    <li><a href="#Installation">Installation</a></li>
-    <li><a href="#References">References</a></li>
-    <li><a href="#License">License</a></li>
-    <li><a href="#Contact">Contact</a></li>
-  </ol>
-</details>
+- [Classification of visual hallucinations in rs-fMRI using machine learning](#classification-of-visual-hallucinations-in-rs-fmri-using-machine-learning)
+  - [1. Project description](#1-project-description)
+  - [2. Data](#2-data)
+  - [3. Preprocessing and feature extraction](#3-preprocessing-and-feature-extraction)
+  - [VMHC, ALFF, fALFF, ReHo](#vmhc-alff-falff-reho)
+  - [fastECM](#fastecm)
+  - [4. Visual Hallucinations Classification pipeline](#4-visual-hallucinations-classification-pipeline)
+    - [Installation](#installation)
+  - [Files and functions](#files-and-functions)
+    - [main.py](#mainpy)
+    - [dataloader.py](#dataloaderpy)
+    - [preprocessing.py](#preprocessingpy)
+    - [feature\_selection.py](#feature_selectionpy)
+    - [classifiers.py](#classifierspy)
+    - [plotting.py](#plottingpy)
+    - [report\_results.py](#report_resultspy)
+- [References](#references)
+- [License](#license)
+- [Contact](#contact)
+
 
 # Classification of visual hallucinations in rs-fMRI using machine learning
 
@@ -52,7 +56,8 @@ July 2023
 
 
 The following graph shows an overview of the created pipeline:
-![Pipeline](images_for_readme/pipeline.pdf "Schematic graph of analysis pipeline")
+[Schematic graph of the analysis pipeline](images_for_readme/pipeline.pdf)
+
 This project was created on MacOS 11.5.2 in Python (Version Python 3.10.10) and tested on a MacBook Pro 2020, 16GB RAM, M1 Chip. Please note that paths in MacOS use backslashes (/) while Windows uses forward slashes (\). Please make sure to use a forward slash when inserting file paths on Windows. 
 
 ## 2. Data
@@ -69,18 +74,24 @@ To run C-PAC, I would advise using the docker or singularity implementation of C
 
 After installing docker or singularity, you have to pull the C-PAC container from the respective platform:
 
+```
 singularity pull FCP-INDI/C-PAC
- 
+```
+
 or
 
+```
 docker pull fcpindi/c-pac:latest
+```
 
 To run the C-PAC container, you have to specify several file paths:
 
+```
 cpac -B /path/to/data/configs:/configs \
              --image fcpindi/c-pac --tag latest \
              run /path/to/data /path/for/outputs \
              --save_working_dir
+```
 
 ## VMHC, ALFF, fALFF, ReHo
 
@@ -89,18 +100,20 @@ After preprocessing, you should have an output folder that contains all files ne
 For simplicity, I gathered all necessary images in one folder. 
 This data folder should contain files from the C-PAC output with the following names:
 
+```
 Data/
 ├── participants.tsv
 ├── sub-0001_ses-1_task-rest_desc-1_vmhc.nii.gz
 ├── sub-0001_ses-1_task-rest_space-template_desc-1_alff.nii.gz
 ├── sub-0001_ses-1_task-rest_space-template_desc-1_falff.nii.gz
 └── sub-0001_ses-1_task-rest_space-template_desc-2_reho.nii.gz
+```
 
 The files starting with *sub* should be present for each participant (0001, 0002, ... or other numbers) if you plan to use the pipeline on the respective feature type. You can also only include files of one feature type in the folder. 
 
 The participants.tsv file should be present in your data repository. It could look like this:
 
-![Pipeline](images_for_readme/participants_file.pdf "First few rows of an example participants.tsv file")
+[First few rows of an example participants.tsv file](images_for_readme/participants_file.pdf)
 
 ## fastECM
 
@@ -108,18 +121,24 @@ For extracting the fastECM features, I used the fastECM method by Wink et al. (h
 
 I first copied the images with the following name from the C-PAC output for each participant into a folder:
 
+```
 sub-0001_ses-1_task-rest_space-template_desc-cleaned-2_bold.nii.gz
+```
 
 This is the preprocessed fMRI scan (BOLD image) that can be used to compute fastECM.
 
 After cloning the fastECM repository:
 
+```
 git clone git@github.com:amwink/bias.git
+```
 
 I opened MATLAB and entered:
 
+```
 >> addpath(genpath('bias'))
 >> fegui
+```
 
 which opens the GUI.
 
@@ -129,11 +148,14 @@ I advise not to import too many images at a time (less than 10).
 
 This results in images of the form:
 
+```
 sub-0001_ses-1_task-rest_space-template_desc-cleaned-2_bold_fastECM.nii.gz
+```
 
 which I also inserted into the data folder. 
 If you want to run all feature types, your folder should look like this:
 
+```
 Data/
 ├── participants.tsv
 ├── sub-0001_ses-1_task-rest_desc-1_vmhc.nii.gz
@@ -141,27 +163,34 @@ Data/
 ├── sub-0001_ses-1_task-rest_space-template_desc-1_falff.nii.gz
 ├── sub-0001_ses-1_task-rest_space-template_desc-2_reho.nii.gz
 └── sub-0001_ses-1_task-rest_space-template_desc-cleaned-2_bold_fastECM.nii.gz
+```
 
 ## 4. Visual Hallucinations Classification pipeline
 
 All subsequent steps can be performed using the pipeline provided in this repository. An overview can be seen in the figure below:
 
-![Pipeline](images_for_readme/Flowchart.pdf "Schematic graph of the current pipeline")
+[Schematic graph of the current pipeline](images_for_readme/Flowchart.pdf)
 
 ### Installation
 
 Clone this repository like so:
 
+```
 git clone git@github.com:LEO-UMCG/Visual_Hallucinations_Classification.git
+```
 
 Once you have the repository, you can create and activate a virtual environment with conda (not necessary but strongly recommended):
 
+```
 conda create —-prefix /Users/me/VHclassification 
 conda activate VHclassification
+```
 
 Then you install the dependencies. Move to the folder containing the repository (the one you cloned into), and enter this in the terminal:
 
+```
 conda install --yes --file requirements.txt
+```
 
 Now you are all set to run the Visual Hallucinations Classification pipeline. 
 
@@ -169,13 +198,16 @@ To configure the pipeline, you have to change the *config-VH_classification.yaml
 
 Once you are satisfied with your configuration, you can run:
 
+```
 python3 code_VH_classification/main.py -c ./config-VH_classification.yaml
+```
 
 Run this in the terminal while being in the main folder for this project: files_VH/
 The flag "-c" is used to enter the configuration file. Change this accordingly if your configuration file is located somewhere else. 
 
 The program should run fully automated from here and produces the following output file tree:
 
+```
 experiment_directory/ 
     ├── experimentID/
     |   ├── experiment_log.txt
@@ -184,6 +216,7 @@ experiment_directory/
     |   └── Nifti_images/
     |   |   ├── brain images in 3D nifti format
     └── experimentID_experiment_results.csv
+```
 
 
 where the path to the experiment_directory and experimentID can be set in the configuration file.
@@ -219,12 +252,13 @@ Contains function for performing feature selection by Pearson correlation and ge
 Firstly converts the activity map to a dataframe. The participant IDs are the rows and the columns are all voxels (with coordinates [i,j,k], flattened array). The values are the intensity value at a specific voxel location for one subject. 
 
 It looks like this (example values):
-
+```
                 0       1       2       3  ... 
 sub-1234     0.2     0.0     0.0     0.0  ...  
 sub-2345     0.1     0.0     0.2     0.0  ...   
 sub-3456     0.0     0.5     0.0     0.0  ...  
 ...          ...     ...     ...     ...
+```
 
 Then the Pearson correlation is calculated for each column of this dataframe (intensity values for one voxel over all training subjects) and the subject labels.
 
