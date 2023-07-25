@@ -137,7 +137,7 @@ All subsequent steps can be performed using the pipeline provided in this reposi
 
 To this end, you have to clone this repository like so:
 
-git clone git@github.com:LEO-UMCG/VisualHallucinationsClassification
+git clone git@github.com:LEO-UMCG/Visual_Hallucinations_Classification.git
 
 Once you have the repository, you can create and activate a virtual environment with conda (not necessary but strongly recommended):
 
