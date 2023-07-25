@@ -294,7 +294,7 @@ Contains the code to run all classifiers.
 
 Below you can see a schematic visualization of a linear SVM:
 
-![Schematic visualization of a linear SVM](images_for_readme/SVM-schema-2.png)
+![Schematic visualization of a linear SVM](images_for_readme/SVM-schema.png)
 
 **run_nonlinear_svm_classification** runs classification with a non-linear SVM using a parameter grid for hyperparameter tuning. Prediction on the test set is performed with the best performing classifier from the grid search. Outputs performance values.
 
