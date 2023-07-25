@@ -1,0 +1,9 @@
+MNI templates citation
+
+MNI152_T1_2mm_Brain_Mask.nii.gz
+from
+https://github.com/Jfortin1/MNITemplate
+
+MNI152_T1_3mm_brain_mask.nii.gz
+from
+https://git.bcbl.eu/brainhackdonostia/material-2019/tree/2fd574bb4340651ed6e853e88d551db9d6b1ee44/fMRI/fmriprep/templates

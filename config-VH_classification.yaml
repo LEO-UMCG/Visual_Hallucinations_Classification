@@ -1,0 +1,62 @@
+#################
+### Input format: How input information should be specified
+
+### f.e. one setting:               setting: SVM
+###                                 path: /Users/me/Desktop/RUG/data/
+###                                 number: 1000
+
+### f.e. more than one setting:     setting: ReHo, fastECM
+###                                 number: 1000, 5000, all
+
+#################
+
+
+[Type]
+# options: SVM, nonlinear_SVM, RF
+# only one model type at a time possible
+model_type = SVM
+
+[Id]
+# your individual id, elements like activity map type will be added to it
+experiment_id: my_new_experiment
+
+[Paths]
+# path of directory containing nifti images (in BIDS format) and participants.tsv file, directory path should end with a "/"
+# filenames of fastECM images have to contain "fastECM" (case sensitive)
+input_dir_path: /Users/me/input_dir/
+
+# path to a folder where the output and logs should be stored, directory path should end with a "/"
+# files in this folder will be overwritten if classifier is run with same input 
+experiment_dir_path: /Users/me/exp_dir/
+
+# path to masking file (f.e. MNI152 mask) to be used during classification (MRI images are masked to a template outline)
+mask_path_2mm: ./masks/MNI152_T1_2mm_Brain_Mask.nii.gz
+
+mask_path_3mm: ./masks/MNI152_T1_3mm_brain_mask.nii.gz
+
+[Experiment]
+# (list of) activity map type(s)
+# have to be separated by a ","
+# some possible activity map types are ReHo, ALFF, fALFF, VMHC, fastECM
+activity_map_type: ReHo, ALFF
+
+# if verbose is set to True, images for several steps and each activity map will be printed out. Moreover, the images will be saved as .nii image to be viewed in 3D.
+verbose: true
+
+# column name of phenotype information in the participants.tsv file (f.e. Group or Label)
+label_col_name: Group
+
+# column name of subject information (f.e. participant_id or ID), individual IDs have to contain 'sub' (f.e. sub-123) in accordance with the Nifti standard
+index_col_name: participant_id
+
+# (list of) number of voxels to select in feature selection (Pearson correlation)
+# have to be separated by a ","
+# write "all" if no feature selection should be applied   #1000, 5000, 10000, all # 
+feature_vector_size: 1000, 5000, all
+
+# scoring measure for classification, possible: 'balanced_accuracy', 'f1', 'accuracy' and other types (see https://scikit-learn.org/stable/modules/model_evaluation.html#the-scoring-parameter-defining-model-evaluation-rules)
+scoring_measure: balanced_accuracy
+
+# labels for classification
+negative_label: PSNVH
+positive_label: PSVH
