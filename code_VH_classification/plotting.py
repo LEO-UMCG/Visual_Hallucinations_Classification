@@ -13,7 +13,7 @@ def z_plot(img, experiment_subdir, title):
 
 
 def save_nii_image(img, experiment_subdir, title):
-    plotting.plot_stat_map(img, cut_coords = (-27, -9, 3, 12, 30, 48, 57), display_mode='z', output_file = os.path.join(experiment_subdir, (title + '.nii')))
+    img.to_filename(os.path.join(experiment_subdir, (title + '.nii')))
     return
 
 

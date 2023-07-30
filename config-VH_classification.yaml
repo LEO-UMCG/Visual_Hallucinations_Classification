@@ -58,5 +58,5 @@ feature_vector_size: 1000, 5000, all
 scoring_measure: balanced_accuracy
 
 # labels for classification
-negative_label: PSNVH
 positive_label: PSVH
+negative_label: PSNVH

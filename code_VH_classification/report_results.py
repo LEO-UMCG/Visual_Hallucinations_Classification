@@ -26,7 +26,6 @@ def report_average_over_folds(csv_path, config, n_folds, classes, activity_map_t
             
             for fold in range(n_folds):
                 fold+=1
-                print(fold)
 
                 condition = ((final_df['this_fold'] == fold) & (final_df['activity_map'] == activity_map) & (final_df['feat_vec_size'] == str(feature_vector_s)))
 
@@ -50,7 +49,7 @@ def report_average_over_folds(csv_path, config, n_folds, classes, activity_map_t
             mean_spec = sum_spec/n_folds
             conf_mat = [tp, fn, fp, tn] 
 
-            print("Accuracy {}, Sensitivity {}, Specificity {}".format(mean_acc, mean_sens, mean_spec))
+            print("Mean Accuracy {}, Sensitivity {}, Specificity {} over {} folds".format(mean_acc, mean_sens, mean_spec, n_folds))
 
             print("Over all folds: TP {}, FN {}, FP {}, TN {}".format(tp, fn, fp, tn)) 
 
