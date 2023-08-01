@@ -45,7 +45,7 @@ The main contributions of this project are:
 
   * Assessing five feature extraction methods for detection of lifetime VH, considering classification accuracy as well as interpretability of the feature weights.
     
-The results of this research were condensed into the master's thesis titled "Towards Automatic Classification of Lifetime Visual Hallucinations in Psychosis using Resting-State fMRI" (2023).
+The results of this research were condensed into the master's thesis titled "Towards Automatic Classification of Lifetime Visual Hallucinations in Psychosis using Resting-State fMRI" (2023), which was also made available in this GitHub repository.
 
 This project was supervised by Ashkan Nejad, Andreea I. Sburlea, and Frans W. Cornelissen at the Rijksuniversiteit Groningen and the University Medical Center Groningen (UMCG).
 
