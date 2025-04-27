@@ -44,16 +44,14 @@ The main contributions of this project are:
   * Testing the pipeline on a dataset comprised of 45 individuals with schizophrenia and healthy controls.
 
   * Assessing five feature extraction methods for detection of lifetime VH, considering classification accuracy as well as interpretability of the feature weights.
-    
-The results of this research were condensed into the master's thesis titled "Towards Automatic Classification of Lifetime Visual Hallucinations in Psychosis using Resting-State fMRI" (2023), which was also made available in this GitHub repository.
 
-This project was supervised by Ashkan Nejad, Andreea I. Sburlea, and Frans W. Cornelissen at the Rijksuniversiteit Groningen and the University Medical Center Groningen (UMCG).
+This project was conducted together with Ashkan Nejad, Andreea I. Sburlea, and Frans W. Cornelissen at the Rijksuniversiteit Groningen and the University Medical Center Groningen (UMCG).
 
 Author information:
 
 Helena Luise Hazeu
 
-Rijksuniversiteit Groningen (Masters Computational Cognitive Science)
+Rijksuniversiteit Groningen
 
 July 2023
 
@@ -72,7 +70,6 @@ The data should be present in the BIDS format (https://bids-specification.readth
 Once all data is present in the BIDS format, it can be preprocessed and the feature maps can be extracted. These steps were conducted using the C-PAC pipeline (https://fcp-indi.github.io/docs/latest/user/quick).
 
 The configuration file used can be found under the name *config_cpac_preprocessing.yml*. 
-For more information on the preprocessing and feature extractionprocedure, please refer to the Methods and Fundamentals sections in my master's thesis.
 
 To run C-PAC, I would advise using the docker or singularity implementation of C-PAC. Details can be found at https://fcp-indi.github.io/docs/latest/user/quick.
 
