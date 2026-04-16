@@ -21,6 +21,14 @@
 
 # Classification of visual hallucinations in rs-fMRI using machine learning
 
+This codebase aims to create a reusable and configurable pipeline for the automated classification of visual hallucinations in individuals with psychosis.
+
+The results were published in the conference proceedings of IEEE EMBC 2025:
+
+[H. L. Hazeu, A. Nejad and F. W. Cornelissen, "Towards Automated Classification of Visual Hallucination Presence in Psychosis using Resting-State fMRI," 2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC), Copenhagen, Denmark, 2025, pp. 1-7, doi: 10.1109/EMBC58623.2025.11251833](https://ieeexplore.ieee.org/abstract/document/11251833).
+
+For questions you can contact [helena.hazeu@gmail.com](mailto:helena.hazeu@gmail.com).
+
 ## 1. Project description
 
 
@@ -340,6 +348,19 @@ Contains all functions for plotting of brain maps, histograms, and confusion mat
 # License
 Distributed under the MIT License. Please refer to "LICENSE.txt" for more information.
 
+# Cite
+```
+@INPROCEEDINGS{11251833,
+  author={Hazeu, Helena L. and Nejad, Ashkan and Cornelissen, Frans W.},
+  booktitle={2025 47th Annual International Conference of the IEEE Engineering in Medicine and Biology Society (EMBC)}, 
+  title={Towards Automated Classification of Visual Hallucination Presence in Psychosis using Resting-State fMRI}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-7},
+  keywords={Support vector machines;Visualization;Fluctuations;Sensitivity;Pipelines;Machine learning;Biomarkers;Schizophrenia;Functional magnetic resonance imaging;Feature extraction;visual hallucinations;schizophrenia;resting-state functional MRI;functional connectivity;machine learning},
+  doi={10.1109/EMBC58623.2025.11251833}}
+```
 
 # Contact
 Helena Hazeu - [helena.hazeu@gmail.com](mailto:helena.hazeu@gmail.com)
